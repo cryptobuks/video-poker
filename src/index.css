@@ -25,7 +25,7 @@ card {
   border: solid 1px black;
 }
 
-.flex-container {
+/* .flex-container {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -33,7 +33,7 @@ card {
   flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
-}
+} */
 
 .spades {
   color: black;
@@ -59,13 +59,6 @@ card {
   color: yellow;
 }
 
-#betBox {
-  background-color: green;
-  margin: 0px;
-  height: 50px;
-  text-align: center;
-}
-
 #myTotal {
   background-color: green;
   width: 60px;
@@ -88,11 +81,11 @@ card {
   width: 90%;
   text-align: center;
   font-weight: bold;
-  float: center;
 }
 
 td {
   text-align: left;
+  /* padding: 10px; */
 }
 
 #theHand {
@@ -125,10 +118,6 @@ td {
   font-size: 24px;
 }
 
-.suit {
-  border: none;
-}
-
 .image {
   border: none;
 }
@@ -150,4 +139,10 @@ td {
 .modal {
   background-color: white;
   width: 400px;
+}
+
+.holdBtn {
+  border: red;
+  color: black;
+  background-color: yellow;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-class TheTable extends React.Component {
+class PayTable extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -30,10 +30,10 @@ class TheTable extends React.Component {
             <tbody>
               <tr>
                 <td>Royal Flush</td>
-                <td>250</td>
-                <td>500</td>
-                <td>750</td>
-                <td>1000</td>
+                <td>800</td>
+                <td>1600</td>
+                <td>2400</td>
+                <td>3200</td>
               </tr>
               <tr>
                 <td>Straight Flush</td>
@@ -58,45 +58,52 @@ class TheTable extends React.Component {
               </tr>
               <tr>
                 <td>Full House</td>
-                <td>45</td>
-                <td>90</td>
-                <td>135</td>
-                <td>180</td>
+                <td>9</td>
+                <td>18</td>
+                <td>27</td>
+                <td>36</td>
               </tr>
               <tr>
                 <td>Flush</td>
-                <td>30</td>
-                <td>60</td>
-                <td>90</td>
-                <td>120</td>
+                <td>6</td>
+                <td>12</td>
+                <td>18</td>
+                <td>24</td>
               </tr>
               <tr>
                 <td>Straight</td>
-                <td>20</td>
-                <td>40</td>
-                <td>60</td>
-                <td>80</td>
+                <td>4</td>
+                <td>8</td>
+                <td>12</td>
+                <td>16</td>
               </tr>
               <tr>
                 <td>Three of a Kind</td>
-                <td>15</td>
-                <td>30</td>
-                <td>45</td>
-                <td>60</td>
+                <td>3</td>
+                <td>6</td>
+                <td>9</td>
+                <td>12</td>
               </tr>
               <tr>
                 <td>Two Pair</td>
-                <td>10</td>
-                <td>20</td>
-                <td>30</td>
-                <td>40</td>
+                <td>2</td>
+                <td>4</td>
+                <td>6</td>
+                <td>8</td>
               </tr>
               <tr>
                 <td>Jacks or Better</td>
-                <td>10</td>
-                <td>20</td>
-                <td>30</td>
-                <td>40</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>All else</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
               </tr>
             </tbody>
           </table>
@@ -141,4 +148,4 @@ class TheTable extends React.Component {
   }
 }
 
-export default TheTable;
+export default PayTable;

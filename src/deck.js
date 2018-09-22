@@ -15,6 +15,8 @@ class TheDeck extends React.Component {
     this.value = value;
   }
 
+  deckMaker() {}
+
   //   createTheShoe() {
   //     this.names = [
   //       "Ace",
@@ -64,16 +66,6 @@ class TheDeck extends React.Component {
   //           });
   //         }
   //       }
-  //     }
-  //   }
-
-  //   shuffleTheCards() {
-  //     for (let i = 0; i < 1000; i++) {
-  //       let location1 = Math.floor(Math.random() * 52);
-  //       let location2 = Math.floor(Math.random() * 52);
-  //       let temp = theShoe[location1];
-  //       theShoe[location1] = theShoe[location2];
-  //       theShoe[location2] = temp;
   //     }
   //   }
 
