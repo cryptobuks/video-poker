@@ -1,94 +1,85 @@
-import React from "react";
+function generateDeck() {
+  let deck = [];
+  const names = [
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Jack",
+    "Queen",
+    "King",
+    "Ace"
+  ];
 
-class CardHelper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      deck: []
-    };
+  const images = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+    "A"
+  ];
 
-    this.generateDeck = this.generateDeck.bind(this);
-    this.shuffleCards = this.shuffleCards.bind(this);
-  }
+  const suits = ["hearts", "diamonds", "spades", "clubs"];
+  const icons = ["♥", "♦", "♠", "♣"];
+  // const icons = ["&hearts;", "&diams;", "&spades;", "&clubs;"];
 
-  card(name, suit, image, value) {
-    this.name = name;
-    this.suit = suit;
-    this.image = image;
-    this.value = value;
-  }
-
-  generateDeck() {
-    const names = [
-      "Ace",
-      "Two",
-      "Three",
-      "Four",
-      "Five",
-      "Six",
-      "Seven",
-      "Eight",
-      "Nine",
-      "Ten",
-      "Jack",
-      "Queen",
-      "King"
-    ];
-
-    const images = [
-      "A",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "J",
-      "Q",
-      "K"
-    ];
-
-    const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
-
-    if (this.state.theDeck.length === 0) {
-      for (let suit = 0; suit < suits.length; suit++) {
-        for (let name = 0; name < names.length; name++) {
-          new this.card(
-            this.names[name],
-            this.suits[suit],
-            this.images[name],
-            name + 1
-          );
-          //   this.card() {
-          //       new card{
-          //         name:this.names[name],
-          //         suit: this.suits[suit],
-          //         image: this.images[name],
-          //         value: name + 1
-          //       }
-          //   }
-        }
-      }
-    }
-    return;
-  }
-
-  shuffleCards() {
-    for (let i = 0; i < 1000; i++) {
-      let index1 = Math.floor(Math.random() * 52);
-      let index2 = Math.floor(Math.random() * 52);
-      let temp = this.state.deck[index1];
-      this.state.deck[index1] = this.state.deck[index2];
-      this.state.deck[index2] = temp;
+  for (let i = 0; i < suits.length; i++) {
+    for (let j = 0; j < names.length; j++) {
+      deck.push({
+        name: names[j],
+        suit: suits[i],
+        image: images[j],
+        value: j + 2,
+        icon: icons[i]
+      });
     }
   }
-
-  render() {
-    return <React.Fragment>Hi</React.Fragment>;
-  }
+  return deck;
 }
 
-export default CardHelper;
+function shuffleDeck(deck) {
+  for (let i = 0; i < 2000; i++) {
+    let index1 = Math.floor(Math.random() * 52);
+    let index2 = Math.floor(Math.random() * 52);
+    let temp = deck[index1];
+    deck[index1] = deck[index2];
+    deck[index2] = temp;
+  }
+  return deck;
+}
+
+function handSorter(hand) {
+  // ace logic here.
+  return hand.sort(function(a, b) {
+    if (a.value > b.value) return 1;
+    else if (a.value < b.value) return -1;
+    return 0;
+  });
+}
+
+//  function suitChanger() {
+//   if (suit === "Spades") {
+//     return " &spades;";
+//   } else if (suit === "Hearts") {
+//     return "&hearts;";
+//   } else if (suit === "Clubs") {
+//     return "&clubs;";
+//   } else if (suit === "Hearts") {
+//     return "&diams;";
+//   }
+// }
+
+export { generateDeck, shuffleDeck, handSorter };

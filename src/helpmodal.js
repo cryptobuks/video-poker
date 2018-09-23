@@ -15,7 +15,7 @@ class HelpModal extends React.Component {
           <button
             type="button"
             id="closeModalButton"
-            onClick={this.props.toggleModal}
+            onClick={this.props.onRequestClose}
           >
             Close Modal
           </button>
