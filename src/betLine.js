@@ -1,21 +1,29 @@
 import React from "react";
 
-class BetLine extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div id="betLine">
-        <span>Bet</span>
-        <span>{this.props.betAmount}</span>
-        <span>Credits</span>
-        <span />
+function betLine(props) {
+  return (
+    <div>
+      <div id="buttons" className="flex-container">
+        <button id="helpBtn" onClick={props.toggleModal}>
+          Help
+        </button>
+        <button id="betOneBtn" onClick={props.betOne}>
+          Bet One
+        </button>
+        <span id="betAmount">
+          Bet {props.betAmount} Coin
+          {props.betAmount == 1 ? " " : "s"}
+        </span>
+        <button id="drawBtn" onClick={props.showFirstFiveCards}>
+          Draw
+        </button>
+        <span id="bankroll">{props.bankroll} Coins</span>
       </div>
-    );
-  }
+      {/* <br />
+      <div id="betLine">
+      </div> */}
+    </div>
+  );
 }
-export default BetLine;
+
+export default betLine;

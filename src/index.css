@@ -16,16 +16,16 @@ body {
 .card {
   display: inline-block;
   text-align: center;
-  margin: 10px;
+  margin: 30px;
   padding: 20px;
   width: 120px;
   height: 180px;
   font-size: 20px;
   background-color: white;
-  border: solid 2px black;
+  border: solid 1px black;
 }
 
-/* .flex-container {
+.flex-container {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -33,7 +33,7 @@ body {
   flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
-} */
+}
 
 .spades {
   color: black;
@@ -59,76 +59,75 @@ body {
   color: yellow;
 }
 
-#myTotal {
-  background-color: green;
-  width: 60px;
-  color: yellow;
-  border: none;
-}
-
-.suit {
-  border: none;
-}
-
-.centered {
+#casino-name {
   text-align: center;
   margin: 10px;
-  color: white;
 }
 
-#payTable {
+#pay-table {
+  background-color: blue;
   color: yellow;
   width: 90%;
-  text-align: center;
+  text-align: right;
+  font-weight: bold;
+  padding: 0;
+}
+
+#tableOne {
+  background-color: blue;
+  color: yellow;
+  text-align: left;
   font-weight: bold;
 }
 
-td {
-  text-align: left;
-  /* padding: 10px; */
+.selected {
+  background-color: red;
+  color: yellow;
+  text-align: right;
+  font-weight: bold;
 }
+
+.notSelected {
+  background-color: blue;
+  color: yellowgreen;
+  text-align: right;
+  font-weight: bold;
+}
+
+/* td {
+  text-align: left; */
+/* padding: 10px;
+} */
 
 #theHand {
   text-align: center;
   height: 300px;
+  width: 90%;
 }
 
-#credits {
-  font-size: 24px;
-  color: yellow;
-  float: right;
-}
-
-#help {
-  float: left;
-  background-color: white;
-  font-size: 24px;
-}
-
-#betOne {
+#buttons {
   float: center;
+}
+
+#helpBtn {
+  background-color: white;
+  color: black;
+  font-size: 24px;
+  float: left;
+}
+
+#betOneBtn {
   background-color: yellow;
+  color: black;
   font-size: 24px;
+  float: center;
 }
 
-#draw {
-  float: right;
+#drawBtn {
   background-color: red;
+  color: black;
   font-size: 24px;
-}
-
-.image {
-  border: none;
-}
-
-.flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
+  float: right;
 }
 
 #closeModalButton {
@@ -140,20 +139,27 @@ td {
   width: 400px;
 }
 
-.holdBtn {
-  border: red;
-  color: black;
-  background-color: yellow;
-}
-
-.hidden {
-  visibility: none;
-}
-
 .discardBtn {
   font-size: 24px;
   border: 2px yellow;
   background-color: red;
   color: yellow;
   margin: 5px;
+}
+
+/* #betLine {
+} */
+
+#betAmount {
+  color: yellow;
+  font-size: 24px;
+  font-weight: bold;
+  float: center;
+}
+
+#bankroll {
+  color: yellow;
+  font-size: 24px;
+  font-weight: bold;
+  float: right;
 }

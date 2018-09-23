@@ -11,7 +11,12 @@ class HelpModal extends React.Component {
           isOpen={this.props.showModal}
           ariaHideApp={false}
         >
-          <p>To play, choose an amount and press "Deal"</p>
+          <p>
+            To play, choose a value between 1 and 5 with the Bet One button.
+            Then press "Deal" to deal a hand. You have the opportunity to redraw
+            up to fice cards once only. Winners are paid according to the pay
+            table. If you get less than a pair of Jacks, you lose.
+          </p>
           <button
             type="button"
             id="closeModalButton"

@@ -34,7 +34,6 @@ function generateDeck() {
 
   const suits = ["hearts", "diamonds", "spades", "clubs"];
   const icons = ["♥", "♦", "♠", "♣"];
-  // const icons = ["&hearts;", "&diams;", "&spades;", "&clubs;"];
 
   for (let i = 0; i < suits.length; i++) {
     for (let j = 0; j < names.length; j++) {
@@ -51,6 +50,7 @@ function generateDeck() {
 }
 
 function shuffleDeck(deck) {
+  // Using Fisher-Yates algo
   for (let i = 0; i < 2000; i++) {
     let index1 = Math.floor(Math.random() * 52);
     let index2 = Math.floor(Math.random() * 52);
@@ -62,24 +62,11 @@ function shuffleDeck(deck) {
 }
 
 function handSorter(hand) {
-  // ace logic here.
   return hand.sort(function(a, b) {
     if (a.value > b.value) return 1;
     else if (a.value < b.value) return -1;
     return 0;
   });
 }
-
-//  function suitChanger() {
-//   if (suit === "Spades") {
-//     return " &spades;";
-//   } else if (suit === "Hearts") {
-//     return "&hearts;";
-//   } else if (suit === "Clubs") {
-//     return "&clubs;";
-//   } else if (suit === "Hearts") {
-//     return "&diams;";
-//   }
-// }
 
 export { generateDeck, shuffleDeck, handSorter };
