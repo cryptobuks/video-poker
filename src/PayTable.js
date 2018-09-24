@@ -12,15 +12,20 @@ const payTable = {
   onePair: 1
 };
 
+const coinAmounts = {
+  column1: 1,
+  column2: 2,
+  column3: 3,
+  column4: 4,
+  column5: 5
+};
+
 class PayTable extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <React.Fragment>
-        <div id="payTable" className="flex-container">
-          <table id="tableOne">
+        <div id="pay-table" className="flex-container">
+          <table id="table-one">
             <tbody>
               <tr>
                 <td>Hand</td>
@@ -55,73 +60,77 @@ class PayTable extends React.Component {
             </tbody>
           </table>
           <table
-            id="tableTwo"
-            className={this.props.betAmount === 1 ? "selected" : "notSelected"}
+            id="table-two"
+            className={
+              this.props.betAmount === coinAmounts.column1
+                ? "selected"
+                : "not-selected"
+            }
           >
             <tbody>
               <tr>
                 <td>1 Coin</td>
               </tr>
               <tr>
-                <td>{payTable.royalFlush * 1}</td>
+                <td>{payTable.royalFlush * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.straightFlush * 1}</td>
+                <td>{payTable.straightFlush * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.fourOfAKind * 1}</td>
+                <td>{payTable.fourOfAKind * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.fullHouse * 1}</td>
+                <td>{payTable.fullHouse * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.flush * 1}</td>
+                <td>{payTable.flush * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.straight * 1}</td>
+                <td>{payTable.straight * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.threeOfAKind * 1}</td>
+                <td>{payTable.threeOfAKind * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.twoPair * 1}</td>
+                <td>{payTable.twoPair * coinAmounts.column1}</td>
               </tr>
               <tr>
-                <td>{payTable.onePair * 1}</td>
+                <td>{payTable.onePair * coinAmounts.column1}</td>
               </tr>
             </tbody>
           </table>
           <table
-            id="tableThree"
-            className={this.props.betAmount === 2 ? "selected" : "notSelected"}
+            id="table-three"
+            className={this.props.betAmount === 2 ? "selected" : "not-selected"}
           >
             <tbody>
               <tr>
                 <td>2 Coins</td>
               </tr>
               <tr>
-                <td>{payTable.royalFlush * 2}</td>
+                <td>{payTable.royalFlush * coinAmounts.column2}</td>
               </tr>
               <tr>
-                <td>{payTable.straightFlush * 2}</td>
+                <td>{payTable.straightFlush * coinAmounts.column2}</td>
               </tr>
               <tr>
-                <td>{payTable.fourOfAKind * 2}</td>
+                <td>{payTable.fourOfAKind * coinAmounts.column2}</td>
               </tr>
               <tr>
-                <td>{payTable.fullHouse * 2}</td>
+                <td>{payTable.fullHouse * coinAmounts.column2}</td>
               </tr>
               <tr>
-                <td>{payTable.flush * 2}</td>
+                <td>{payTable.flush * coinAmounts.column2}</td>
               </tr>
               <tr>
-                <td>{payTable.straight * 2}</td>
+                <td>{payTable.straight * coinAmounts.column2}</td>
               </tr>
               <tr>
-                <td>{payTable.threeOfAKind * 2}</td>
+                <td>{payTable.threeOfAKind * coinAmounts.column2}</td>
               </tr>
               <tr>
-                <td>{payTable.twoPair * 2}</td>
+                <td>{payTable.twoPair * coinAmounts.column2}</td>
               </tr>
               <tr>
                 <td>{payTable.onePair * 2}</td>
@@ -129,113 +138,113 @@ class PayTable extends React.Component {
             </tbody>
           </table>
           <table
-            id="tableFour"
-            className={this.props.betAmount === 3 ? "selected" : "notSelected"}
+            id="table-four"
+            className={this.props.betAmount === 3 ? "selected" : "not-selected"}
           >
             <tbody>
               <tr>
                 <td>3 Coins</td>
               </tr>
               <tr>
-                <td>{payTable.royalFlush * 3}</td>
+                <td>{payTable.royalFlush * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.straightFlush * 3}</td>
+                <td>{payTable.straightFlush * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.fourOfAKind * 3}</td>
+                <td>{payTable.fourOfAKind * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.fullHouse * 3}</td>
+                <td>{payTable.fullHouse * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.flush * 3}</td>
+                <td>{payTable.flush * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.straight * 3}</td>
+                <td>{payTable.straight * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.threeOfAKind * 3}</td>
+                <td>{payTable.threeOfAKind * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.twoPair * 3}</td>
+                <td>{payTable.twoPair * coinAmounts.column3}</td>
               </tr>
               <tr>
-                <td>{payTable.onePair * 3}</td>
+                <td>{payTable.onePair * coinAmounts.column3}</td>
               </tr>
             </tbody>
           </table>
           <table
-            id="tableFive"
-            className={this.props.betAmount === 4 ? "selected" : "notSelected"}
+            id="table-five"
+            className={this.props.betAmount === 4 ? "selected" : "not-selected"}
           >
             <tbody>
               <tr>
                 <td>4 Coins</td>
               </tr>
               <tr>
-                <td>{payTable.royalFlush * 4}</td>
+                <td>{payTable.royalFlush * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.straightFlush * 4}</td>
+                <td>{payTable.straightFlush * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.fourOfAKind * 4}</td>
+                <td>{payTable.fourOfAKind * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.fullHouse * 4}</td>
+                <td>{payTable.fullHouse * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.flush * 4}</td>
+                <td>{payTable.flush * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.straight * 4}</td>
+                <td>{payTable.straight * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.threeOfAKind * 4}</td>
+                <td>{payTable.threeOfAKind * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.twoPair * 4}</td>
+                <td>{payTable.twoPair * coinAmounts.column4}</td>
               </tr>
               <tr>
-                <td>{payTable.onePair * 4}</td>
+                <td>{payTable.onePair * coinAmounts.column4}</td>
               </tr>
             </tbody>
           </table>
           <table
-            id="tableSix"
-            className={this.props.betAmount === 5 ? "selected" : "notSelected"}
+            id="table-six"
+            className={this.props.betAmount === 5 ? "selected" : "not-selected"}
           >
             <tbody>
               <tr>
                 <td>5 Coins</td>
               </tr>
               <tr>
-                <td>{payTable.royalFlush * 5}</td>
+                <td>{payTable.royalFlush * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.straightFlush * 5}</td>
+                <td>{payTable.straightFlush * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.fourOfAKind * 5}</td>
+                <td>{payTable.fourOfAKind * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.fullHouse * 5}</td>
+                <td>{payTable.fullHouse * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.flush * 5}</td>
+                <td>{payTable.flush * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.straight * 5}</td>
+                <td>{payTable.straight * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.threeOfAKind * 5}</td>
+                <td>{payTable.threeOfAKind * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.twoPair * 5}</td>
+                <td>{payTable.twoPair * coinAmounts.column5}</td>
               </tr>
               <tr>
-                <td>{payTable.onePair * 5}</td>
+                <td>{payTable.onePair * coinAmounts.column5}</td>
               </tr>
             </tbody>
           </table>

@@ -42,7 +42,8 @@ function generateDeck() {
         suit: suits[i],
         image: images[j],
         value: j + 2,
-        icon: icons[i]
+        icon: icons[i],
+        isChecked: false
       });
     }
   }

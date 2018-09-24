@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: green;
+  width: 100%;
 }
 
 .horizontal-line {
@@ -67,13 +68,12 @@ body {
 #pay-table {
   background-color: blue;
   color: yellow;
-  width: 90%;
   text-align: right;
   font-weight: bold;
   padding: 0;
 }
 
-#tableOne {
+#table-one {
   background-color: blue;
   color: yellow;
   text-align: left;
@@ -87,59 +87,26 @@ body {
   font-weight: bold;
 }
 
-.notSelected {
+.not-selected {
   background-color: blue;
   color: yellowgreen;
   text-align: right;
   font-weight: bold;
 }
 
-/* td {
-  text-align: left; */
-/* padding: 10px;
-} */
+#hand-result {
+  color: yellow;
+  font-size: 24px;
+  font-weight: bold;
+  float: center;
+}
 
-#theHand {
+#the-hand {
   text-align: center;
   height: 300px;
-  width: 90%;
 }
 
-#buttons {
-  float: center;
-}
-
-#helpBtn {
-  background-color: white;
-  color: black;
-  font-size: 24px;
-  float: left;
-}
-
-#betOneBtn {
-  background-color: yellow;
-  color: black;
-  font-size: 24px;
-  float: center;
-}
-
-#drawBtn {
-  background-color: red;
-  color: black;
-  font-size: 24px;
-  float: right;
-}
-
-#closeModalButton {
-  background-color: red;
-}
-
-.modal {
-  background-color: white;
-  width: 400px;
-}
-
-.discardBtn {
+.discard-btn {
   font-size: 24px;
   border: 2px yellow;
   background-color: red;
@@ -147,19 +114,54 @@ body {
   margin: 5px;
 }
 
-/* #betLine {
-} */
+#buttons {
+  float: center;
+}
 
-#betAmount {
+#help-btn {
+  background-color: white;
+  color: black;
+  font-size: 24px;
+  /* float: left; */
+}
+
+#bet-one-btn {
+  background-color: yellow;
+  color: black;
+  font-size: 24px;
+  /* float: center; */
+}
+
+#bet-amount {
   color: yellow;
   font-size: 24px;
   font-weight: bold;
-  float: center;
+  /* float: center; */
+}
+
+#draw-btn {
+  background-color: red;
+  color: black;
+  font-size: 24px;
+  /* float: right; */
+  width: 100px;
 }
 
 #bankroll {
   color: yellow;
   font-size: 24px;
   font-weight: bold;
-  float: right;
+  /* float: right; */
 }
+
+.modal {
+  background-color: white;
+  width: 400px;
+}
+
+#close-modal-button {
+  background-color: red;
+}
+
+/* #betLine {
+} */
