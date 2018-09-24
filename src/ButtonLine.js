@@ -1,6 +1,6 @@
 import React from "react";
 
-function betLine(props) {
+function buttonLine(props) {
   return (
     <div>
       <div id="buttons" className="flex-container">
@@ -16,6 +16,7 @@ function betLine(props) {
         </span>
         <button
           id="draw-btn"
+          className={props.isDeal === true ? "draw-btn" : "draw-btn-clicked"}
           onClick={
             props.isDeal === true ? props.dealFirstFiveCards : props.discard
           }
@@ -28,4 +29,4 @@ function betLine(props) {
   );
 }
 
-export default betLine;
+export default buttonLine;

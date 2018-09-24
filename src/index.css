@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
   background-color: green;
   width: 100%;
-  /* overflow: hidden; */
+  overflow-x: hidden;
 }
 
 .horizontal-line {
@@ -139,14 +139,19 @@ body {
   color: yellow;
   font-size: 24px;
   font-weight: bold;
-  /* float: center; */
 }
 
-#draw-btn {
+.draw-btn {
   background-color: red;
   color: black;
   font-size: 24px;
-  /* float: right; */
+  width: 100px;
+}
+
+.draw-btn-clicked {
+  background-color: blue;
+  color: black;
+  font-size: 24px;
   width: 100px;
 }
 
@@ -154,7 +159,6 @@ body {
   color: yellow;
   font-size: 24px;
   font-weight: bold;
-  /* float: right; */
 }
 
 .modal {

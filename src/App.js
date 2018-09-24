@@ -6,7 +6,7 @@ import HelpModal from "./HelpModal.js";
 import * as cardHelpers from "./helpers/cardHelpers.js";
 import * as cardLogic from "./helpers/cardLogic.js";
 import Card from "./card.js";
-import BetLine from "./BetLine.js";
+import ButtonLine from "./ButtonLine.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +22,7 @@ class App extends React.Component {
       pokerResult: "",
       winAmount: ""
     };
+
     this.betOne = this.betOne.bind(this);
     this.dealFirstFiveCards = this.dealFirstFiveCards.bind(this);
     this.discardToggle = this.discardToggle.bind(this);
@@ -29,25 +30,6 @@ class App extends React.Component {
     this.pokerResult = this.pokerResult.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
-
-  // componentDidMount() {
-  //   let deck = cardHelpers.generateDeck();
-  //   cardHelpers.shuffleDeck(deck);
-  //   this.setState({ deck: deck, buttonName: "Deal" });
-  // }
-
-  // showFirstFiveCards() {
-  //   let hand = this.state.deck.slice(0, 5);
-  //   cardHelpers.handSorter(hand);
-  //   // console.log(hand);
-  //   let deckLength = this.state.deck.length;
-  //   let deck = this.state.deck.slice(5, deckLength);
-  //   this.setState({
-  //     deck,
-  //     hand,
-  //     buttonName: "Go"
-  //   });
-  // }
 
   betOne() {
     this.state.betAmount < 5
@@ -61,8 +43,6 @@ class App extends React.Component {
     this.setState({ deck: deck, isDeal: true });
     let hand = deck.slice(0, 5);
     cardHelpers.handSorter(hand);
-    // let deckLength = this.state.deck.length;
-    // let deck = this.state.deck.slice(5, deckLength);
     this.setState({
       deck,
       hand,
@@ -94,6 +74,7 @@ class App extends React.Component {
         newHand = newHand.concat(deck.slice(5 + i, 5 + i + 1));
       }
     }
+    cardHelpers.handSorter(newHand);
     this.setState({
       isDeal: true,
       hand: newHand
@@ -190,7 +171,7 @@ class App extends React.Component {
         </div>
         <hr className="horizontal-line" />
 
-        <BetLine
+        <ButtonLine
           toggleModal={this.toggleModal}
           betOne={this.betOne}
           dealFirstFiveCards={this.dealFirstFiveCards}
