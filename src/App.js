@@ -58,7 +58,7 @@ class App extends React.Component {
         return card;
       }
     });
-    this.setState({ hand });
+    this.setState({ hand, pokerResult: "", winAmount: "" });
   }
 
   discard() {
@@ -77,7 +77,8 @@ class App extends React.Component {
     cardHelpers.handSorter(newHand);
     this.setState({
       isDeal: true,
-      hand: newHand
+      hand: newHand,
+      pokerResult: cardLogic.cardLogic(this.state.hand)
     });
     this.pokerResult();
   }
@@ -95,18 +96,14 @@ class App extends React.Component {
       onePair: 1
     };
 
-    this.setState({ pokerResult: cardLogic.cardLogic(this.state.hand) });
+    let pokerResult = cardLogic.cardLogic(this.state.hand);
+    let winAmount = Object.values(payTable.pokerResult) * this.state.betAmount;
+    let bankroll = this.state.bankroll + winAmount;
 
-    // {
-    //   !!this.state.hand.length && cardLogic.cardLogic(this.state.hand);
-    // }
-
-    // this.setState({
-    //   winAmount: payTable.(this.state.pokerResult) * this.state.betAmount,
-    //   bankroll:
-    //     this.state.bankroll +
-    //     payTable.this.state.pokerResult * this.state.betAmount
-    // });
+    this.setState({
+      winAmount: winAmount,
+      bankroll: bankroll
+    });
   }
   // selectChecked() {
   //   this.setState({});
