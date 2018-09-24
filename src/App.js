@@ -1,7 +1,7 @@
 import React from "react";
 import CasinoName from "./CasinoName.js";
 import PayTable from "./PayTable.js";
-import HandResult from "./HandResult.js";
+// import HandResult from "./HandResult.js";
 import HelpModal from "./HelpModal.js";
 import * as cardHelpers from "./helpers/cardHelpers.js";
 import * as cardLogic from "./helpers/cardLogic.js";
@@ -70,22 +70,30 @@ class App extends React.Component {
     });
   }
 
-  discardToggle() {
-    //toggle check here
-    console.log("discardToggle fires");
+  discardToggle(cardIndex) {
+    const hand = this.state.hand.map((card, index) => {
+      if (cardIndex === index) {
+        return { ...card, isChecked: !card.isChecked };
+      } else {
+        return card;
+      }
+    });
+    this.setState({ hand });
   }
 
   discard() {
-    // props.card.isChecked = !props.card.isChecked;
+    console.log("this.state.hand", this.state.hand);
+    console.log("this.state.deck", this.state.deck);
+    let deck = this.state.deck;
     let newHand = this.state.hand.filter(card => {
       return card.isChecked === false;
     });
-    if (this.state.hand.length < 5) {
-      newHand.push(this.state.deck.slice(0, 1));
+    let cardsNeeded = 5 - newHand.length;
+    for (let i = 0; i < cardsNeeded; i++) {
+      if (cardsNeeded) {
+        newHand = newHand.concat(deck.slice(5 + i, 5 + i + 1));
+      }
     }
-    // do {
-    //   newHand.push(this.state.deck.slice(0, 1));
-    // } while (newHand.length < 5);
     this.setState({
       isDeal: true,
       hand: newHand
@@ -105,10 +113,13 @@ class App extends React.Component {
       twoPair: 2,
       onePair: 1
     };
-    {
-      !!this.state.hand.length && cardLogic.cardLogic(this.state.hand);
-    }
+
     this.setState({ pokerResult: cardLogic.cardLogic(this.state.hand) });
+
+    // {
+    //   !!this.state.hand.length && cardLogic.cardLogic(this.state.hand);
+    // }
+
     // this.setState({
     //   winAmount: payTable.(this.state.pokerResult) * this.state.betAmount,
     //   bankroll:
@@ -133,43 +144,52 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log("this.state.deck", this.state.deck);
+    console.log("this.state.deck", this.state.deck);
     console.log("this.state.hand", this.state.hand);
     console.log("this.state.pokerResult=", this.state.pokerResult);
     return (
       <React.Fragment>
         <CasinoName />
-        <div className="horizontal-line" />
+        <hr className="horizontal-line" />
         <div id="top" className="flex-container">
           <div id="pay-table">
             <PayTable betAmount={this.state.betAmount} />
           </div>
           <div id="hand-result">
-            {" "}
-            {!!this.state.hand.length &&
+            {/* {!!this.state.hand.length &&
               cardLogic.cardLogic(this.state.hand) &&
-              !!this.state.isDeal}
-            <p>You win {this.state.winAmount} coins</p>
-            {/* <HandResult hand={this.state.hand} /> */}
-            {/* {!!this.state.hand.length && cardLogic.cardLogic(this.state.hand)} */}
+              !this.state.isDeal} */}
+            {this.state.pokerResult.handResult === "" ? null : (
+              <div>
+                <p>{this.state.pokerResult.pokerHand}</p>
+                {this.state.winAmount === "" ? null : (
+                  <p>You win {this.state.winAmount} coins</p>
+                )}
+              </div>
+            )}
+
+            {/* <HandResult hand={this.state.hand} /> 
+             {!!this.state.hand.length && cardLogic.cardLogic(this.state.hand)}  */}
+          </div>
+
+          <hr className="horizontal-line" />
+          <HelpModal
+            showModal={this.state.showModal}
+            isOpen={this.toggleModal}
+            onRequestClose={this.toggleModal}
+          />
+          <div id="the-hand" className="flex-contianer">
+            {this.state.hand.map((card, cardIndex) => (
+              <Card
+                key={cardIndex}
+                card={card}
+                discardToggle={() => this.discardToggle(cardIndex)}
+              />
+            ))}
           </div>
         </div>
-        <div className="horizontal-line" />
-        <HelpModal
-          showModal={this.state.showModal}
-          isOpen={this.toggleModal}
-          onRequestClose={this.toggleModal}
-        />
-        <div id="the-hand" className="flex-contianer">
-          {this.state.hand.map((card, cardIndex) => (
-            <Card
-              key={cardIndex}
-              card={card}
-              discardToggle={this.discardToggle}
-            />
-          ))}
-        </div>
-        <div className="horizontal-line" />
+        <hr className="horizontal-line" />
+
         <BetLine
           toggleModal={this.toggleModal}
           betOne={this.betOne}

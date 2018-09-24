@@ -93,9 +93,9 @@ function cardLogic(hand) {
     handResult = "onePair";
   } else {
     pokerHand = "You have Nothing";
-    handResult = "nothing";
+    handResult = "Nothing";
   }
-  return pokerHand, handResult;
+  return { pokerHand, handResult };
 }
 
 export { cardLogic };
