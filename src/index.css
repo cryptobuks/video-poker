@@ -17,6 +17,16 @@ body {
   margin: 0;
 }
 
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .card {
   display: inline-block;
   text-align: center;
@@ -29,14 +39,16 @@ body {
   border: solid 1px black;
 }
 
-.flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
+.card-selected {
+  display: inline-block;
+  text-align: center;
+  margin: 30px;
+  padding: 20px;
+  width: 120px;
+  height: 180px;
+  font-size: 20px;
+  background-color: palevioletred;
+  border: solid 1px black;
 }
 
 .spades {
@@ -76,6 +88,10 @@ body {
   padding: 0;
 }
 
+table {
+  padding: 2px;
+}
+
 #table-one {
   background-color: blue;
   color: yellow;
@@ -83,18 +99,23 @@ body {
   font-weight: bold;
 }
 
-.selected {
+.paytable {
+  background-color: blue;
+  color: yellowgreen;
+  text-align: right;
+  font-weight: bold;
+}
+
+.paytable-selected {
   background-color: red;
   color: yellow;
   text-align: right;
   font-weight: bold;
 }
 
-.not-selected {
-  background-color: blue;
-  color: yellowgreen;
-  text-align: right;
-  font-weight: bold;
+.hand-result {
+  color: yellow;
+  font-size: 24px;
 }
 
 #hand-result {
@@ -117,28 +138,51 @@ body {
   margin: 5px;
 }
 
-#buttons {
-  float: center;
+.discard-btn-selected {
+  font-size: 24px;
+  border: 2px yellow;
+  background-color: red;
+  color: yellow;
+  margin: 5px;
+}
+
+.discard-btn-disabled {
+  font-size: 24px;
+  border: 2px yellow;
+  background-color: gray;
+  color: yellow;
+  margin: 5px;
 }
 
 #help-btn {
   background-color: white;
   color: black;
   font-size: 24px;
-  /* float: left; */
 }
 
-#bet-one-btn {
+#strategy-btn {
+  background-color: powderblue;
+  color: black;
+  font-size: 24px;
+}
+
+.bet-one-btn {
   background-color: yellow;
   color: black;
   font-size: 24px;
-  /* float: center; */
+}
+
+.bet-one-btn-disabled {
+  background-color: gray;
+  color: black;
+  font-size: 24px;
 }
 
 #bet-amount {
   color: yellow;
   font-size: 24px;
   font-weight: bold;
+  width: 150px;
 }
 
 .draw-btn {
@@ -164,15 +208,10 @@ body {
 .modal {
   background-color: white;
   width: 400px;
+  padding: 10px;
+  margin: 10px;
 }
 
-#close-modal-button {
+.close-modal-button {
   background-color: red;
 }
-
-.hand-result {
-  color: yellow;
-  font-size: 24px;
-}
-/* #betLine {
-} */

@@ -3,11 +3,19 @@ import React from "react";
 function buttonLine(props) {
   return (
     <div>
-      <div id="buttons" className="flex-container">
-        <button id="help-btn" onClick={props.toggleModal}>
-          Help
+      <div id="button-line" className="flex-container">
+        <button id="help-btn" onClick={props.toggleHelpModal}>
+          How to Play
         </button>
-        <button id="bet-one-btn" onClick={props.betOne}>
+        <button id="strategy-btn" onClick={props.toggleStrategyModal}>
+          Strategy Tips
+        </button>
+        <button
+          id="bet-one-btn"
+          disabled={!props.isDeal}
+          className={props.isDeal ? "bet-one-btn" : "bet-one-btn-disabled"}
+          onClick={props.betOne}
+        >
           Bet One
         </button>
         <span id="bet-amount">

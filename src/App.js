@@ -1,8 +1,8 @@
 import React from "react";
 import CasinoName from "./CasinoName.js";
 import PayTable from "./PayTable.js";
-// import HandResult from "./HandResult.js";
 import HelpModal from "./HelpModal.js";
+import StrategyModal from "./StrategyModal.js";
 import * as cardHelpers from "./helpers/cardHelpers.js";
 import * as cardLogic from "./helpers/cardLogic.js";
 import Card from "./card.js";
@@ -17,7 +17,8 @@ class App extends React.Component {
       hand: [],
       betAmount: 1,
       bankroll: 100,
-      showModal: false,
+      showHelpModal: false,
+      showStrategyModal: false,
       isDeal: true,
       pokerResult: "",
       winAmount: ""
@@ -27,8 +28,8 @@ class App extends React.Component {
     this.dealFirstFiveCards = this.dealFirstFiveCards.bind(this);
     this.discardToggle = this.discardToggle.bind(this);
     this.discard = this.discard.bind(this);
-    this.pokerResult = this.pokerResult.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
+    this.toggleHelpModal = this.toggleHelpModal.bind(this);
+    this.toggleStrategyModal = this.toggleStrategyModal.bind(this);
   }
 
   betOne() {
@@ -62,8 +63,6 @@ class App extends React.Component {
   }
 
   discard() {
-    console.log("this.state.hand", this.state.hand);
-    console.log("this.state.deck", this.state.deck);
     let deck = this.state.deck;
     let newHand = this.state.hand.filter(card => {
       return card.isChecked === false;
@@ -80,81 +79,46 @@ class App extends React.Component {
       hand: newHand,
       pokerResult: cardLogic.cardLogic(this.state.hand)
     });
-    this.pokerResult();
   }
 
-  pokerResult() {
-    const payTable = {
-      royalFlush: 800,
-      straightFlush: 50,
-      fourOfAKind: 25,
-      fullHouse: 9,
-      flush: 6,
-      straight: 4,
-      threeOfAKind: 3,
-      twoPair: 2,
-      onePair: 1
-    };
-
-    let pokerResult = cardLogic.cardLogic(this.state.hand);
-    let winAmount = Object.values(payTable.pokerResult) * this.state.betAmount;
-    let bankroll = this.state.bankroll + winAmount;
-
-    this.setState({
-      winAmount: winAmount,
-      bankroll: bankroll
-    });
+  toggleHelpModal(prevState) {
+    this.setState({ showHelpModal: !this.state.showHelpModal });
   }
-  // selectChecked() {
-  //   this.setState({});
-  // }
 
-  // let newHand = this.state.deck.slice(0, numChecked);
-
-  // this.setState({ bankroll: this.state.bankroll - 1 });
-  // this.setState(hand:hand.filter.whichever is clicked to be discarded)
-  // click is to discard, not keep.
-  // this.setState(hand: deck(0, howevermany were chosen))
-
-  toggleModal(prevState) {
-    this.setState({ showModal: !this.state.showModal });
-    // this.setState({ showModal: !prevState.showModal });
+  toggleStrategyModal(prevState) {
+    this.setState({ showStrategyModal: !this.state.showStrategyModal });
   }
 
   render() {
-    console.log("this.state.deck", this.state.deck);
-    console.log("this.state.hand", this.state.hand);
-    console.log("this.state.pokerResult=", this.state.pokerResult);
+    console.log("this.state.isDeal=", this.state.isDeal);
     return (
       <React.Fragment>
         <CasinoName />
         <hr className="horizontal-line" />
-        <div id="top" className="flex-container">
+        <div id="main" className="flex-container">
           <div id="pay-table">
             <PayTable betAmount={this.state.betAmount} />
           </div>
           <div id="hand-result">
-            {/* {!!this.state.hand.length &&
-              cardLogic.cardLogic(this.state.hand) &&
-              !this.state.isDeal} */}
-            {this.state.pokerResult.handResult === "" ? null : (
-              <div>
-                <p>{this.state.pokerResult.pokerHand}</p>
-                {this.state.winAmount === "" ? null : (
-                  <p>You win {this.state.winAmount} coins</p>
-                )}
-              </div>
-            )}
-
-            {/* <HandResult hand={this.state.hand} /> 
-             {!!this.state.hand.length && cardLogic.cardLogic(this.state.hand)}  */}
+            {!!this.state.hand.length && cardLogic.cardLogic(this.state.hand)}
+            {/* <HandResult 
+          betAmount={this.state.betAmount}
+          pokerResult={this.state.pokerResult}
+          isDeal={this.state.isDeal}
+          bankroll={this.state.bankroll}
+          
+          /> */}
           </div>
-
           <hr className="horizontal-line" />
           <HelpModal
-            showModal={this.state.showModal}
-            isOpen={this.toggleModal}
-            onRequestClose={this.toggleModal}
+            showHelpModal={this.state.showHelpModal}
+            isOpen={this.toggleHelpModal}
+            onRequestClose={this.toggleHelpModal}
+          />
+          <StrategyModal
+            showStrategyModal={this.state.showStrategyModal}
+            isOpen={this.toggleStrategyModal}
+            onRequestClose={this.toggleStrategyModal}
           />
           <div id="the-hand" className="flex-contianer">
             {this.state.hand.map((card, cardIndex) => (
@@ -162,6 +126,7 @@ class App extends React.Component {
                 key={cardIndex}
                 card={card}
                 discardToggle={() => this.discardToggle(cardIndex)}
+                isDeal={this.state.isDeal}
               />
             ))}
           </div>
@@ -169,7 +134,8 @@ class App extends React.Component {
         <hr className="horizontal-line" />
 
         <ButtonLine
-          toggleModal={this.toggleModal}
+          toggleHelpModal={this.toggleHelpModal}
+          toggleStrategyModal={this.toggleStrategyModal}
           betOne={this.betOne}
           dealFirstFiveCards={this.dealFirstFiveCards}
           discard={this.discard}

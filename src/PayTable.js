@@ -9,7 +9,8 @@ const payTable = {
   straight: 4,
   threeOfAKind: 3,
   twoPair: 2,
-  onePair: 1
+  onePair: 1,
+  nothing: 0
 };
 
 const coinAmounts = {
@@ -63,13 +64,16 @@ class PayTable extends React.Component {
             id="table-two"
             className={
               this.props.betAmount === coinAmounts.column1
-                ? "selected"
-                : "not-selected"
+                ? "paytable-selected"
+                : "paytable"
             }
           >
             <tbody>
               <tr>
-                <td>1 Coin</td>
+                <td>
+                  {coinAmounts.column1} Coin
+                  {coinAmounts.column1 === 1 ? " " : "s"}
+                </td>
               </tr>
               <tr>
                 <td>{payTable.royalFlush * coinAmounts.column1}</td>
@@ -102,11 +106,17 @@ class PayTable extends React.Component {
           </table>
           <table
             id="table-three"
-            className={this.props.betAmount === 2 ? "selected" : "not-selected"}
+            className={
+              this.props.betAmount === 2 ? "paytable-selected" : "paytable"
+            }
           >
             <tbody>
               <tr>
-                <td>2 Coins</td>
+                <td>
+                  {" "}
+                  {coinAmounts.column2} Coin
+                  {coinAmounts.column2 === 1 ? " " : "s"}
+                </td>
               </tr>
               <tr>
                 <td>{payTable.royalFlush * coinAmounts.column2}</td>
@@ -139,11 +149,17 @@ class PayTable extends React.Component {
           </table>
           <table
             id="table-four"
-            className={this.props.betAmount === 3 ? "selected" : "not-selected"}
+            className={
+              this.props.betAmount === 3 ? "paytable-selected" : "paytable"
+            }
           >
             <tbody>
               <tr>
-                <td>3 Coins</td>
+                <td>
+                  {" "}
+                  {coinAmounts.column3} Coin
+                  {coinAmounts.column3 === 1 ? " " : "s"}
+                </td>
               </tr>
               <tr>
                 <td>{payTable.royalFlush * coinAmounts.column3}</td>
@@ -176,11 +192,17 @@ class PayTable extends React.Component {
           </table>
           <table
             id="table-five"
-            className={this.props.betAmount === 4 ? "selected" : "not-selected"}
+            className={
+              this.props.betAmount === 4 ? "paytable-selected" : "paytable"
+            }
           >
             <tbody>
               <tr>
-                <td>4 Coins</td>
+                <td>
+                  {" "}
+                  {coinAmounts.column4} Coin
+                  {coinAmounts.column4 === 1 ? " " : "s"}
+                </td>
               </tr>
               <tr>
                 <td>{payTable.royalFlush * coinAmounts.column4}</td>
@@ -213,11 +235,17 @@ class PayTable extends React.Component {
           </table>
           <table
             id="table-six"
-            className={this.props.betAmount === 5 ? "selected" : "not-selected"}
+            className={
+              this.props.betAmount === 5 ? "paytable-selected" : "paytable"
+            }
           >
             <tbody>
               <tr>
-                <td>5 Coins</td>
+                <td>
+                  {" "}
+                  {coinAmounts.column5} Coin
+                  {coinAmounts.column5 === 1 ? " " : "s"}
+                </td>
               </tr>
               <tr>
                 <td>{payTable.royalFlush * coinAmounts.column5}</td>
