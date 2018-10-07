@@ -23,4 +23,9 @@ yarn-error.log*
 # VSCode
 .vscode/settings.json
 
+<<<<<<< HEAD
 instructions.md
+=======
+instructions.md
+notes.md
+>>>>>>> f252714416e157ed21e90f4068c743d15ccca4be
