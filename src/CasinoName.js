@@ -9,7 +9,7 @@ class CasinoName extends React.Component {
           <span className="hearts">&hearts; </span>
           <span className="clubs">&clubs; </span>
           <span className="diamonds">&diams; </span>
-          <span className="yellow">Casino sweetgreen </span>
+          <span className="yellow">Casino Video Poker </span>
           <span className="spades">&spades; </span>
           <span className="hearts">&hearts; </span>
           <span className="clubs">&clubs; </span>
