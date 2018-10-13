@@ -17,6 +17,16 @@ body {
   margin: 0;
 }
 
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
 .card {
   display: inline-block;
   text-align: center;
@@ -41,26 +51,24 @@ body {
   border: solid 1px black;
 }
 
-.flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-.icon {
+.spades {
+  color: black;
   font-size: 48px;
 }
 
-.black {
+.clubs {
   color: black;
+  font-size: 48px;
 }
 
-.red {
+.hearts {
   color: red;
+  font-size: 48px;
+}
+
+.diamonds {
+  color: red;
+  font-size: 48px;
 }
 
 .yellow {
@@ -80,6 +88,24 @@ body {
   padding: 0;
 }
 
+table {
+  padding: 2px;
+}
+
+#table-one {
+  background-color: blue;
+  color: yellow;
+  text-align: left;
+  font-weight: bold;
+}
+
+.paytable {
+  background-color: blue;
+  color: yellowgreen;
+  text-align: right;
+  font-weight: bold;
+}
+
 .paytable-selected {
   background-color: red;
   color: yellow;
@@ -87,11 +113,9 @@ body {
   font-weight: bold;
 }
 
-.not-selected {
-  background-color: blue;
-  color: yellowgreen;
-  text-align: right;
-  font-weight: bold;
+.hand-result {
+  color: yellow;
+  font-size: 24px;
 }
 
 #hand-result {
@@ -142,13 +166,13 @@ body {
   font-size: 24px;
 }
 
-#bet-one-btn {
+.bet-one-btn {
   background-color: yellow;
   color: black;
   font-size: 24px;
 }
 
-#bet-one-btn-disabled {
+.bet-one-btn-disabled {
   background-color: gray;
   color: black;
   font-size: 24px;
@@ -184,13 +208,10 @@ body {
 .modal {
   background-color: white;
   width: 400px;
+  padding: 10px;
+  margin: 10px;
 }
 
-#close-modal-button {
+.close-modal-button {
   background-color: red;
-}
-
-.hand-result {
-  color: yellow;
-  font-size: 24px;
 }
