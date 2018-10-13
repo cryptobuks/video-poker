@@ -1,40 +1,39 @@
-const names = [
-  "Two",
-  "Three",
-  "Four",
-  "Five",
-  "Six",
-  "Seven",
-  "Eight",
-  "Nine",
-  "Ten",
-  "Jack",
-  "Queen",
-  "King",
-  "Ace"
-];
-
-const images = [
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K",
-  "A"
-];
-
-const suits = ["hearts", "diamonds", "spades", "clubs"];
-const icons = ["♥", "♦", "♠", "♣"];
-
 function generateDeck() {
   let deck = [];
+  const names = [
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Jack",
+    "Queen",
+    "King",
+    "Ace"
+  ];
+
+  const images = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+    "A"
+  ];
+
+  const suits = ["hearts", "diamonds", "spades", "clubs"];
+  const icons = ["♥", "♦", "♠", "♣"];
 
   for (let i = 0; i < suits.length; i++) {
     for (let j = 0; j < names.length; j++) {
@@ -44,11 +43,10 @@ function generateDeck() {
         image: images[j],
         value: j + 2,
         icon: icons[i],
-        discard: false
+        isChecked: false
       });
     }
   }
-
   return deck;
 }
 
@@ -64,7 +62,7 @@ function shuffleDeck(deck) {
   return deck;
 }
 
-function sortHand(hand) {
+function handSorter(hand) {
   return hand.sort(function(a, b) {
     if (a.value > b.value) return 1;
     else if (a.value < b.value) return -1;
@@ -72,4 +70,4 @@ function sortHand(hand) {
   });
 }
 
-export { generateDeck, shuffleDeck, sortHand };
+export { generateDeck, shuffleDeck, handSorter };
