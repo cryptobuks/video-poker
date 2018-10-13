@@ -24,6 +24,7 @@ yarn-error.log*
 .vscode/settings.json
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 instructions.md
 niky.md
 =======
@@ -33,4 +34,7 @@ instructions.md
 instructions.md
 notes.md
 >>>>>>> f252714416e157ed21e90f4068c743d15ccca4be
+>>>>>>> origin/master
+=======
+instructions.md
 >>>>>>> origin/master
