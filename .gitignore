@@ -23,18 +23,9 @@ yarn-error.log*
 # VSCode
 .vscode/settings.json
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 instructions.md
 niky.md
-=======
-<<<<<<< HEAD
-instructions.md
-=======
-instructions.md
-notes.md
->>>>>>> f252714416e157ed21e90f4068c743d15ccca4be
->>>>>>> origin/master
-=======
-instructions.md
->>>>>>> origin/master
+oldcardlogic.md
+
+

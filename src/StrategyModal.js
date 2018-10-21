@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 
-class HelpModal extends React.Component {
+class StrategyModal extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -33,4 +33,4 @@ class HelpModal extends React.Component {
     );
   }
 }
-export default HelpModal;
+export default StrategyModal;

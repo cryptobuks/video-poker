@@ -3,145 +3,104 @@ import CasinoName from "./CasinoName.js";
 import PayTable from "./PayTable.js";
 import HelpModal from "./HelpModal.js";
 import StrategyModal from "./StrategyModal.js";
-import * as cardHelpers from "./helpers/cardHelpers.js";
-import * as cardLogic from "./helpers/cardLogic.js";
-import Card from "./card.js";
+import { generateDeck, shuffleDeck, sortHand } from "./helpers/cardHelpers.js";
+import cardLogic from "./helpers/cardLogic.js";
 import ButtonLine from "./ButtonLine.js";
+import CardContainer from "./CardContainer.js";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    deck: [],
+    hand: [],
+    betAmount: 1,
+    bankroll: 100,
+    // showHelpModal: false,
+    // showStrategyModal: false,
+    showModal: false,
+    isDeal: true,
+    winAmount: null
+  };
 
-    this.state = {
-      deck: [],
-      hand: [],
-      betAmount: 1,
-      bankroll: 100,
-      showHelpModal: false,
-      showStrategyModal: false,
-      isDeal: true,
-      pokerResult: "",
-      winAmount: ""
-    };
-
-    this.betOne = this.betOne.bind(this);
-    this.dealFirstFiveCards = this.dealFirstFiveCards.bind(this);
-    this.discardToggle = this.discardToggle.bind(this);
-    this.discard = this.discard.bind(this);
-    this.toggleHelpModal = this.toggleHelpModal.bind(this);
-    this.toggleStrategyModal = this.toggleStrategyModal.bind(this);
-  }
-
-  betOne() {
-    this.state.betAmount < 5
-      ? this.setState({ betAmount: this.state.betAmount + 1 })
-      : this.setState({ betAmount: 1 });
-  }
-
-  dealFirstFiveCards() {
-    let deck = cardHelpers.generateDeck();
-    cardHelpers.shuffleDeck(deck);
-    this.setState({ deck: deck, isDeal: true });
-    let hand = deck.slice(0, 5);
-    cardHelpers.handSorter(hand);
-    this.setState({
-      deck,
-      hand,
-      isDeal: false
+  betOne = () => {
+    this.setState(prevState => {
+      const betAmount = prevState.betAmount < 5 ? prevState.betAmount + 1 : 1;
+      return { betAmount };
     });
-  }
+  };
 
-  discardToggle(cardIndex) {
-    const hand = this.state.hand.map((card, index) => {
-      if (cardIndex === index) {
-        return { ...card, isChecked: !card.isChecked };
+  initialDeal = () => {
+    const newDeck = shuffleDeck(generateDeck());
+    this.dealCards(5, [], newDeck);
+  };
+
+  discardToggle = discardCard => {
+    const hand = this.state.hand.map(card => {
+      if (card === discardCard) {
+        return { ...card, discard: !card.discard };
       } else {
         return card;
       }
     });
-    this.setState({ hand, pokerResult: "", winAmount: "" });
-  }
+    this.setState({ hand });
+  };
 
-  discard() {
-    let deck = this.state.deck;
-    let newHand = this.state.hand.filter(card => {
-      return card.isChecked === false;
-    });
+  dealCards = (count, prevHand, prevDeck) => {
+    const newCards = prevDeck.slice(0, count);
+    const deck = prevDeck.slice(count, prevDeck.length);
+    const hand = sortHand([...newCards, ...prevHand]);
+    this.setState(prevState => ({
+      hand,
+      deck,
+      isDeal: !prevState.isDeal
+    }));
+  };
+
+  discard = () => {
+    const { deck, hand } = this.state;
+    let newHand = hand.filter(card => !card.discard);
     let cardsNeeded = 5 - newHand.length;
-    for (let i = 0; i < cardsNeeded; i++) {
-      if (cardsNeeded) {
-        newHand = newHand.concat(deck.slice(5 + i, 5 + i + 1));
-      }
-    }
-    cardHelpers.handSorter(newHand);
-    this.setState({
-      isDeal: true,
-      hand: newHand,
-      pokerResult: cardLogic.cardLogic(this.state.hand)
-    });
-  }
+    this.dealCards(cardsNeeded, newHand, deck);
+  };
 
-  toggleHelpModal(prevState) {
-    this.setState({ showHelpModal: !this.state.showHelpModal });
-  }
-
-  toggleStrategyModal(prevState) {
-    this.setState({ showStrategyModal: !this.state.showStrategyModal });
-  }
+  // toggleModal(prevState) {
+  //   this.setState(prevState => {
+  //     showModal: !prevState.showModal;
+  //   });
+  // }
 
   render() {
-    console.log("this.state.isDeal=", this.state.isDeal);
+    const { betAmount, hand, showModal, bankroll, isDeal } = this.state;
+    const showResult = !!hand.length;
     return (
       <React.Fragment>
         <CasinoName />
         <hr className="horizontal-line" />
-        <div id="main" className="flex-container">
-          <div id="pay-table">
-            <PayTable betAmount={this.state.betAmount} />
-          </div>
-          <div id="hand-result">
-            {!!this.state.hand.length && cardLogic.cardLogic(this.state.hand)}
-            {/* <HandResult 
-          betAmount={this.state.betAmount}
-          pokerResult={this.state.pokerResult}
-          isDeal={this.state.isDeal}
-          bankroll={this.state.bankroll}
-          
-          /> */}
-          </div>
+        <div id="top" className="flex-container">
+          <PayTable betAmount={betAmount} />
+          {showResult && <div id="hand-result">{cardLogic(hand)}</div>}
           <hr className="horizontal-line" />
           <HelpModal
             showHelpModal={this.state.showHelpModal}
-            isOpen={this.toggleHelpModal}
-            onRequestClose={this.toggleHelpModal}
+            showModal={this.state.showModal}
+            isOpen={this.toggleModal}
+            onRequestClose={this.toggleModal}
           />
           <StrategyModal
             showStrategyModal={this.state.showStrategyModal}
-            isOpen={this.toggleStrategyModal}
-            onRequestClose={this.toggleStrategyModal}
+            isOpen={this.toggleModal}
+            onRequestClose={this.toggleModal}
           />
-          <div id="the-hand" className="flex-contianer">
-            {this.state.hand.map((card, cardIndex) => (
-              <Card
-                key={cardIndex}
-                card={card}
-                discardToggle={() => this.discardToggle(cardIndex)}
-                isDeal={this.state.isDeal}
-              />
-            ))}
-          </div>
+          <CardContainer hand={hand} discardToggle={this.discardToggle} />
         </div>
         <hr className="horizontal-line" />
-
         <ButtonLine
-          toggleHelpModal={this.toggleHelpModal}
-          toggleStrategyModal={this.toggleStrategyModal}
+          toggleModal={this.toggleModal}
           betOne={this.betOne}
-          dealFirstFiveCards={this.dealFirstFiveCards}
+          initialDeal={this.initialDeal}
           discard={this.discard}
-          betAmount={this.state.betAmount}
-          bankroll={this.state.bankroll}
-          isDeal={this.state.isDeal}
+          betAmount={betAmount}
+          bankroll={bankroll}
+          isDeal={isDeal}
         />
       </React.Fragment>
     );

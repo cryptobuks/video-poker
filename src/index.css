@@ -17,16 +17,6 @@ body {
   margin: 0;
 }
 
-.flex-container {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
-}
-
 .card {
   display: inline-block;
   text-align: center;
@@ -37,6 +27,16 @@ body {
   font-size: 20px;
   background-color: white;
   border: solid 1px black;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 .card-selected {
@@ -51,24 +51,15 @@ body {
   border: solid 1px black;
 }
 
-.spades {
+.icon {
+  font-size: 48px;
+}
+.black {
   color: black;
-  font-size: 48px;
 }
 
-.clubs {
-  color: black;
-  font-size: 48px;
-}
-
-.hearts {
+.red {
   color: red;
-  font-size: 48px;
-}
-
-.diamonds {
-  color: red;
-  font-size: 48px;
 }
 
 .yellow {
@@ -99,14 +90,14 @@ table {
   font-weight: bold;
 }
 
-.paytable {
+.not-slected {
   background-color: blue;
   color: yellowgreen;
   text-align: right;
   font-weight: bold;
 }
 
-.paytable-selected {
+/* .paytable-selected {
   background-color: red;
   color: yellow;
   text-align: right;
@@ -116,7 +107,7 @@ table {
 .hand-result {
   color: yellow;
   font-size: 24px;
-}
+} */
 
 #hand-result {
   color: yellow;
@@ -133,7 +124,7 @@ table {
 .discard-btn {
   font-size: 24px;
   border: 2px yellow;
-  background-color: red;
+  background-color: green;
   color: yellow;
   margin: 5px;
 }
@@ -166,13 +157,13 @@ table {
   font-size: 24px;
 }
 
-.bet-one-btn {
+#bet-one-btn {
   background-color: yellow;
   color: black;
   font-size: 24px;
 }
 
-.bet-one-btn-disabled {
+#bet-one-btn-disabled {
   background-color: gray;
   color: black;
   font-size: 24px;
@@ -208,10 +199,24 @@ table {
 .modal {
   background-color: white;
   width: 400px;
-  padding: 10px;
-  margin: 10px;
 }
 
-.close-modal-button {
+#close-modal-button {
   background-color: red;
+}
+
+.diamonds {
+  color: red;
+}
+
+.hearts {
+  color: red;
+}
+
+.clubs {
+  color: black;
+}
+
+.spades {
+  color: black;
 }
