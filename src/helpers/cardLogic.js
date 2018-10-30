@@ -1,40 +1,36 @@
 const royalFlush = hand => {
-  const values = hand.map(card => card.values);
-  return areFlush && areEqual(values, [10, 11, 12, 13, 14]);
+  const values = hand.map(card => card.value);
+  return flush(hand) && areEqual(values, ["10", "11", "12", "13", "14"]);
 };
 
-// const straightFlush = hand => {
-//   return areFlush && areEqual;
-// };
+const straightFlush = hand => {
+  return flush(hand) && straight(cardObj);
+};
 
 const mostOfAKind = cardObj => {
   const values = Object.values(cardObj);
   return values.sort((a, b) => a - b)[values.length - 1];
 };
 
-const areFullHouse = cardObj => {
+const fullHouse = cardObj => {
   const values = Object.values(cardObj);
   return values.length === 2;
 };
 
-const areFlush = hand => {
+const flush = hand => {
   const suits = hand.map(card => card.suit);
   const set = new Set(suits);
   return set.size === 1;
 };
 
-const areStraight = cardObj => {
-  const values = Object.values(cardObj);
+const straight = cardObj => {
+  const values = Object.keys(cardObj);
   values.sort((a, b) => a - b);
-  return values[4] - values[0] === 5;
+  if (values.length !== 5) return false;
+  else if (areEqual(values, ["2", "3", "4", "5", "14"])) return true;
+  else if (values[4] - values[0] === 4) return true;
+  else return false;
 };
-
-//if
-//object,keys.includes 5 || object.keys.includes 10
-//sort ascending.
-//and
-//keys[4]-keys[0]===5 ||
-//keys[4]===14 && keys[3]===4 && keys[2]===4  && keys[1]===3 && keys[0]===2
 
 const areEqual = (a, b) => {
   if (a.length !== b.length) return false;
@@ -79,34 +75,32 @@ export default hand => {
   const cards = cardObj(hand);
   if (royalFlush(hand)) {
     return "You have a Royal Flush!";
-  }
-  // else if (straightFlush(hand)) {
-  //   return "You have a Straight Flush!";
-  // }
-  else if (mostOfAKind(cards) === 4) {
+  } else if (straightFlush(hand)) {
+    return "You have a Straight Flush!";
+  } else if (mostOfAKind(cards) === 4) {
     return "You have 4 of a Kind";
-  } else if (areFullHouse(cards)) {
+  } else if (fullHouse(cards)) {
     return "You have a Full House";
-  } else if (areFlush(hand)) {
+  } else if (flush(hand)) {
     return "You have a Flush";
-  } else if (areStraight(cards)) {
-    return "You have a straight";
+  } else if (straight(cards)) {
+    return "You have a Straight";
   } else if (mostOfAKind(cards) === 3) {
     return "You have 3 of a Kind";
   } else if (twoPairs(cards)) {
     return "You have Two Pairs";
   } else if (twoJacks(cards)) {
-    return "You have a Pair of Jacks or better";
+    return "You have One Pair of Jacks or better";
   } else return "You have nothing";
 };
 
 export {
   royalFlush,
-  // straightFlush,
+  straightFlush,
   mostOfAKind,
-  areFullHouse,
-  areFlush,
-  areStraight,
+  fullHouse,
+  flush,
+  straight,
   areEqual,
   twoPairs,
   twoJacks,

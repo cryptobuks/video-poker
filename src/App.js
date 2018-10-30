@@ -7,6 +7,7 @@ import { generateDeck, shuffleDeck, sortHand } from "./helpers/cardHelpers.js";
 import cardLogic from "./helpers/cardLogic.js";
 import ButtonLine from "./ButtonLine.js";
 import CardContainer from "./CardContainer.js";
+import ResultBox from "./ResultBox";
 
 class App extends React.Component {
   state = {
@@ -18,7 +19,7 @@ class App extends React.Component {
     // showStrategyModal: false,
     showModal: false,
     isDeal: true,
-    winAmount: null
+    winAmount: 0
   };
 
   betOne = () => {
@@ -77,6 +78,7 @@ class App extends React.Component {
         <hr className="horizontal-line" />
         <div id="top" className="flex-container">
           <PayTable betAmount={betAmount} />
+          {/* <ResultBox betAmount={betAmount} bankroll={bankroll} /> */}
           {showResult && <div id="hand-result">{cardLogic(hand)}</div>}
           <hr className="horizontal-line" />
           <HelpModal
