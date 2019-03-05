@@ -7,7 +7,7 @@ import { generateDeck, shuffleDeck, sortHand } from "./helpers/cardHelpers.js";
 import cardLogic from "./helpers/cardLogic.js";
 import ButtonLine from "./ButtonLine.js";
 import CardContainer from "./CardContainer.js";
-import ResultBox from "./ResultBox";
+// import ResultBox from "./ResultBox";
 
 class App extends React.Component {
   state = {
@@ -70,7 +70,8 @@ class App extends React.Component {
   // }
 
   render() {
-    const { betAmount, hand, showModal, bankroll, isDeal } = this.state;
+    const { betAmount, hand, bankroll, isDeal } = this.state;
+    // const {showModal} = this.state;
     const showResult = !!hand.length;
     return (
       <React.Fragment>
